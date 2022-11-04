@@ -1,14 +1,46 @@
-//
-//  main.cpp
-//  Queue_STL
-//
-//  Created by Mitch Campbell on 2022/11/04.
-//
-
 #include <iostream>
+#include <stack>
+#include <queue>
 
-int main(int argc, const char * argv[]) {
-	// insert code here...
-	std::cout << "Hello, World!\n";
+template <class Type>
+void reverseQ(std::queue<Type> &q)
+{
+	std::stack<Type> localStack;
+	
+	while (!q.empty())
+	{
+		localStack.push(q.front());
+		q.pop();
+	}
+	
+	while (!localStack.empty())
+	{
+		q.emplace(localStack.top());
+		localStack.pop();
+	}
+}
+
+
+template <class Type>
+void printQueue(std::queue<Type> &theQueue)
+{
+	while (!theQueue.empty())
+	{
+		std::cout << theQueue.front() << " ";
+		theQueue.pop();
+	}
+	std::cout << std::endl;
+}
+
+int main()
+{
+	std::queue<int> q;
+	q.emplace(1);
+	q.emplace(2);
+	q.emplace(3);
+	q.emplace(4);
+	reverseQ(q);
+	printQueue(q);
+	
 	return 0;
 }
