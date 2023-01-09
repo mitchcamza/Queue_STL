@@ -3,32 +3,35 @@
 #include <queue>
 #include <string>
 
+#include <stack>
+
 template <class Type>
 void reverseQ(std::queue<Type> &q)
 {
-	std::stack<Type> localStack;
-	
+	std::stack<Type> s;
 	while (!q.empty())
 	{
-		localStack.push(q.front());
+		s.push(q.front());
 		q.pop();
 	}
 	
-	while (!localStack.empty())
+	while (!s.empty())
 	{
-		q.emplace(localStack.top());
-		localStack.pop();
+		q.push(s.top());
+		s.pop();
 	}
 }
 
 
 template <class Type>
-void printQueue(std::queue<Type> &theQueue)
+void printQueue(const std::queue<Type>& theQueue)
 {
-	while (!theQueue.empty())
+	// create a copy of the queue to maintain original queue elements
+	std::queue<Type> tempQueue = theQueue;
+	while (!tempQueue.empty())
 	{
-		std::cout << theQueue.front() << " ";
-		theQueue.pop();
+		std::cout << tempQueue.front() << " ";
+		tempQueue.pop();
 	}
 	std::cout << std::endl;
 }
@@ -67,26 +70,38 @@ bool isInLanguageL(std::string w)
 
 int main()
 {
-//	std::queue<int> q;
-//	q.emplace(1);
-//	q.emplace(2);
-//	q.emplace(3);
-//	q.emplace(4);
-//	reverseQ(q);
-//	printQueue(q);
+	/// test with an empty queue
+	std::queue<int> emptyQueue;
+	reverseQ(emptyQueue);
+	assert(emptyQueue.empty());
 	
 	
-	std::string w = "aabb";
+	/// test with a queue of size 5
+	std::queue<int> q;
 	
-	if (isInLanguageL(w))
-	{
-		std::cout << w << " is in the language L" << std::endl;
-	}
+	// add elements to queue
+	q.emplace(1);
+	q.emplace(2);
+	q.emplace(3);
+	q.emplace(4);
+	q.emplace(5);
 	
-	else
-	{
-		std::cout << w << " is not in the language L" << std::endl;
-	}
+	assert(q.front() == 1);
+	assert(q.back() == 5);
+	
+	// print the elements in the queue before reversing
+	std::cout << "The queue before reversing: ";
+	printQueue(q);
+	
+	// reverse the queue
+	reverseQ(q);
+	
+	assert(q.front() == 5);
+	assert(q.back() == 1);
+	
+	// print the elements in the queue after reversing
+	std::cout << "The queue after reversing: ";
+	printQueue(q);
 	
 	return 0;
 }
