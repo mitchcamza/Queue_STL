@@ -68,9 +68,8 @@ bool isInLanguageL(std::string w)
 	}
 }
 
-int main()
+static void test_reverseQ()
 {
-	/// test with an empty queue
 	std::queue<int> emptyQueue;
 	reverseQ(emptyQueue);
 	assert(emptyQueue.empty());
@@ -102,6 +101,12 @@ int main()
 	// print the elements in the queue after reversing
 	std::cout << "The queue after reversing: ";
 	printQueue(q);
+}
+
+int main()
+{
+	/// test with an empty queue
+	test_reverseQ();
 	
 	return 0;
 }
