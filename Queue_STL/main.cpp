@@ -45,7 +45,7 @@ bool isInLanguageL(std::string w)
 	
 	while (w[index] == 'a')
 	{
-		q.emplace('-');
+		q.push('-');
 		index++;
 	}
 	
@@ -79,7 +79,7 @@ void replaceEverySecondItem(std::queue<Type>& q, const Type& newItem)
 	// move elements to temp queue
 	while (!q.empty())
 	{
-		tempQueue.emplace(q.front());
+		tempQueue.push(q.front());
 		q.pop();
 	}
 	
@@ -89,11 +89,11 @@ void replaceEverySecondItem(std::queue<Type>& q, const Type& newItem)
 	{
 		if (currentIndex % 2 == 0)
 		{
-			q.emplace(tempQueue.front());
+			q.push(tempQueue.front());
 		}
 		else
 		{
-			q.emplace(newItem);
+			q.push(newItem);
 		}
 		tempQueue.pop();
 		currentIndex++;
@@ -110,11 +110,11 @@ static void test_reverseQ()
 	std::queue<int> q;
 	
 	// add elements to queue
-	q.emplace(1);
-	q.emplace(2);
-	q.emplace(3);
-	q.emplace(4);
-	q.emplace(5);
+	q.push(1);
+	q.push(2);
+	q.push(3);
+	q.push(4);
+	q.push(5);
 	
 	assert(q.front() == 1);
 	assert(q.back() == 5);
@@ -139,13 +139,13 @@ static void test_replaceEverySeconItem()
 	std::queue<int> myQueue;
 	
 	// add elements to queue
-	myQueue.emplace(1);
-	myQueue.emplace(3);
-	myQueue.emplace(4);
-	myQueue.emplace(6);
-	myQueue.emplace(7);
-	myQueue.emplace(8);
-	myQueue.emplace(2);
+	myQueue.push(1);
+	myQueue.push(3);
+	myQueue.push(4);
+	myQueue.push(6);
+	myQueue.push(7);
+	myQueue.push(8);
+	myQueue.push(2);
 	
 	std::cout << "My queue before replaceEverySecondItem: ";
 	printQueue(myQueue);
