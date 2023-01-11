@@ -2,103 +2,9 @@
 #include <stack>
 #include <queue>
 #include <string>
-
 #include <stack>
+#include "Queue.h"
 
-template <class Type>
-void reverseQ(std::queue<Type> &q)
-{
-	std::stack<Type> s;
-	while (!q.empty())
-	{
-		s.push(q.front());
-		q.pop();
-	}
-	
-	while (!s.empty())
-	{
-		q.push(s.top());
-		s.pop();
-	}
-}
-
-
-template <class Type>
-void printQueue(const std::queue<Type>& theQueue)
-{
-	// create a copy of the queue to maintain original queue elements
-	std::queue<Type> tempQueue = theQueue;
-	
-	while (!tempQueue.empty())
-	{
-		std::cout << tempQueue.front() << " ";
-		tempQueue.pop();
-	}
-	std::cout << std::endl;
-}
-
-
-bool isInLanguageL(std::string w)
-{
-	std::queue<char> q;
-	unsigned int index = 0;
-	
-	while (w[index] == 'a')
-	{
-		q.push('-');
-		index++;
-	}
-	
-	while (w[index] == 'b' && !q.empty())
-	{
-		if (q.front() == '-')
-		{
-			q.pop();
-			index++;
-		}
-	}
-	
-	if (q.empty())
-	{
-		return index == w.length();
-	}
-	
-	else
-	{
-		return false;
-	}
-}
-
-// Function replaces every second item in a queue with a new item.
-template <class Type>
-void replaceEverySecondItem(std::queue<Type>& q, const Type& newItem)
-{
-	// create a temp queue to maintain original elements
-	std::queue<Type> tempQueue;
-	
-	// move elements to temp queue
-	while (!q.empty())
-	{
-		tempQueue.push(q.front());
-		q.pop();
-	}
-	
-	// conditionally move elements back to original queue
-	unsigned int currentIndex = 0;
-	while (!tempQueue.empty())
-	{
-		if (currentIndex % 2 == 0)
-		{
-			q.push(tempQueue.front());
-		}
-		else
-		{
-			q.push(newItem);
-		}
-		tempQueue.pop();
-		currentIndex++;
-	}
-}
 
 static void test_reverseQ()
 {
@@ -331,10 +237,8 @@ static void test_replaceEverySeconItem()
 }
 
 
-
 int main()
 {
-	test_replaceEverySeconItem();
 	
 	return 0;
 }
