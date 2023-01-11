@@ -237,8 +237,31 @@ static void test_replaceEverySeconItem()
 }
 
 
+static void test_replaceItem()
+{
+	std::queue<int> myQueue;
+	
+	myQueue.push(1);
+	myQueue.push(2);
+	myQueue.push(2);
+	myQueue.push(10);
+	myQueue.push(22);
+	
+	std::cout << "My queue before replaceItem: ";
+	printQueue(myQueue);
+	std::cout << std::endl;
+	
+	replaceItem(myQueue, 2, 8);
+	
+	std::cout << "My queue after replaceItem: ";
+	printQueue(myQueue);
+	std::cout << std::endl;
+}
+
+
 int main()
 {
+	test_replaceItem();
 	
 	return 0;
 }
