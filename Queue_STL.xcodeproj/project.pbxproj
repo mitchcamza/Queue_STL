@@ -26,6 +26,7 @@
 		5E5C319C296E85E9006433E1 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		5E9DCBFB2914DE250089A96B /* Queue_STL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Queue_STL; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9DCBFE2914DE250089A96B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5EDF1021299A8A4C0042FE91 /* tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 			children = (
 				5E5C319C296E85E9006433E1 /* Queue.h */,
 				5E9DCBFE2914DE250089A96B /* main.cpp */,
+				5EDF1021299A8A4C0042FE91 /* tests.h */,
 			);
 			path = Queue_STL;
 			sourceTree = "<group>";
